@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
+    "@ng-select/ng-select": "^3.3.0",
+    "ng-image-slider": "^2.1.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",

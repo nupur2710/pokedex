@@ -1,8 +1,11 @@
 <!-- Search form -->
-<div class='search-bar'>
-    <input class='search-input' type='text' placeholder='Search Pokemon' (input)='searchPokemon($event);'>
-</div>
-
-<div *ngFor="let item of filteredItems">
-    {{item.name}}
-</div>
+<h1> Pokedex</h1>
+<ng-select [multiple]="true" [(ngModel)]="filteredItems" placeholder="Search Pokemon">
+    <ng-option *ngFor="let item of pokeApiData" [value]="item.name">{{item.name}}</ng-option>
+    <ng-option [value]="'custom'">Custom</ng-option>
+</ng-select>
+<button type="button" (click)='submitSearch($event)'>Click Me!</button>
+<br/>
+<br/>
+<div>Todays Pokemon: </div>
+<app-pokemon-tile></app-pokemon-tile>

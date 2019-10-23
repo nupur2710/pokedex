@@ -1,0 +1,14 @@
+.pokemon-tile-container {
+    display: flex;
+    width: 50%;
+    min-width: 500px;
+    border: 1px solid black;
+    display: -webkit-flex;
+    /* Safari */
+    display: flex;
+}
+
+.image-container {
+    width: 25%;
+    min-width: 200px;
+}
