@@ -19,7 +19,7 @@ export class PokemonTileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.generateTileData(this.pokemon);
   }
 
   generateTileData(currentPokemon) {

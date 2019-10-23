@@ -1,4 +1,4 @@
-<div class='pokemon-tile-container'>
+<div class='pokemon-tile-container' *ngIf='pokemon'>
     <div class='image-container'>
         <ng-image-slider [images]='imageObject' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
     </div>
