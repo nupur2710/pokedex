@@ -4,7 +4,7 @@
     </div>
     <div class='information-container'>
         <div class='name'>Name:</div>
-        <div class='name'>{{pokemon.name}}</div>
-        <div class='image'>Image:</div>
+        <span>{{pokemon.name}}</span>
+        <a [routerLink]="['/detailPage', pokemon.name]">View Details</a>
     </div>
 </div>

@@ -19,6 +19,10 @@ export class HomepageComponent implements OnInit {
     this.loadPokemonData();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   loadPokemonData() {
     let date = new Date(),
       todaysPokemonData = localStorage.getItem(date.toDateString()),
@@ -36,6 +40,7 @@ export class HomepageComponent implements OnInit {
 
     } else {
       this.getPokeData();
+      this.getRandomPokemonForToday();
     }
   }
 

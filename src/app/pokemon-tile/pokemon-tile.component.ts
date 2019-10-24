@@ -23,19 +23,21 @@ export class PokemonTileComponent implements OnInit {
   }
 
   generateTileData(currentPokemon) {
-    this.pokemon = currentPokemon;
-    let images = currentPokemon['sprites'], imageKeys = Object.keys(images);
-    for (let i = 0; i < imageKeys.length; i++) {
-      if (images[imageKeys[i]] != null) {
-        this.imageObject.push({
-          image: images[imageKeys[i]],
-          thumbImage: images[imageKeys[i]],
-          alt: 'alt of image'
-        })
+    if (currentPokemon) {
+      this.pokemon = currentPokemon;
+      let images = currentPokemon['sprites'], imageKeys = Object.keys(images);
+      for (let i = 0; i < imageKeys.length; i++) {
+        if (images[imageKeys[i]] != null) {
+          this.imageObject.push({
+            image: images[imageKeys[i]],
+            thumbImage: images[imageKeys[i]],
+            alt: 'alt of image'
+          })
+        }
       }
     }
-  }
 
+  }
 
   fetchTodaysPokemom() {
     this.subscription = this.pokeApiService.todaysPokemonUpdated.subscribe(
@@ -45,5 +47,11 @@ export class PokemonTileComponent implements OnInit {
       }
     )
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+
 
 }

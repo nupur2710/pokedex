@@ -1,11 +1,17 @@
-<!-- Search form -->
-<h1> Pokedex</h1>
-<ng-select [multiple]="true" [(ngModel)]="filteredItems" placeholder="Search Pokemon">
-    <ng-option *ngFor="let item of pokeApiData" [value]="item.name">{{item.name}}</ng-option>
-    <ng-option [value]="'custom'">Custom</ng-option>
-</ng-select>
-<button type="button" (click)='submitSearch($event)'>Click Me!</button>
-<br/>
-<br/>
-<div>Todays Pokemon: </div>
-<app-pokemon-tile></app-pokemon-tile>
+<!-- Start Search form -->
+<div class='home-page-container'>
+    <ng-select [multiple]="true" [(ngModel)]="filteredItems" placeholder="Search Pokemon">
+        <ng-option *ngFor="let item of pokeApiData" [value]="item.name">{{item.name}}</ng-option>
+        <ng-option [value]="'custom'">Custom</ng-option>
+    </ng-select>
+    <button type="button" (click)='submitSearch($event)'>Click Me!</button>
+    <!-- End Search form-->
+    <br/>
+    <br/>
+    <!-- Start today's pokemon-->
+    <div class='pokemon-today'>
+        <div class='todays-pokemon-title'>Todays Pokemon: </div>
+        <app-pokemon-tile></app-pokemon-tile>
+    </div>
+    <!-- End today's pokemon-->
+</div>

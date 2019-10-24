@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeApiService } from '../shared/poke-api.service';
-import { Subscription } from 'rxjs/Subscription';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -9,7 +8,6 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent implements OnInit {
-  private subscription: Subscription;
   private variablelist: Array<String>;
   private pokeApiData;
   private searchPokemonApi;
@@ -30,7 +28,6 @@ export class SearchPageComponent implements OnInit {
       for (let i = 0; i < this.variablelist.length; i++) {
         this.searchPokemonApi.push(this.pokeApiService.fetchPokemonData(this.variablelist[i]));
       }
-
       forkJoin(this.searchPokemonApi)
         .map(response => {
           for (let i = 0; i < response.length; i++) {
@@ -42,5 +39,6 @@ export class SearchPageComponent implements OnInit {
         .subscribe((data) => console.log(data));
     }
   }
+  
 
 }
