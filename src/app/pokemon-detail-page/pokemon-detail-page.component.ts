@@ -14,6 +14,7 @@ export class PokemonDetailPageComponent implements OnInit {
   private pokemon: Object;
   private imageObject;
   private speciesData;
+  private speciesInformation;
 
   constructor(private route: ActivatedRoute, private pokeApiService: PokeApiService) { }
 
@@ -56,8 +57,33 @@ export class PokemonDetailPageComponent implements OnInit {
       .map(response => {
         this.speciesData = JSON.parse(response['_body']);
         console.log(this.speciesData);
+        this.generateSpeciesDataObject();
+
       })
-      .subscribe(data=>console.log(data));
+      .subscribe(data => console.log(data));
+  }
+
+  generateSpeciesDataObject() {
+    let speciesData = this.speciesData, summary = '';
+    let enSummaryList = this.speciesData["flavor_text_entries"].filter((item, index) => {
+      if (item.language.name == 'en') {
+        return item['flavor_text'];
+      }
+    });
+    for (let i = 0; i < enSummaryList.length; i++) {
+      summary += enSummaryList[i]['flavor_text'];
+    }
+
+    this.speciesInformation = {
+      base_happiness: speciesData.base_happiness,
+      color: speciesData.color && speciesData.color.name ? speciesData.color.name : null,
+      capture_rate: speciesData.capture_rate,
+      evolves_from_species: speciesData.evolves_from_species && speciesData.evolves_from_species.name ? speciesData.evolves_from_species.name : null,
+      summary: summary,
+      growth_rate: speciesData.growth_rate && speciesData.growth_rate.name ? speciesData.growth_rate.name : null,
+      habitat: speciesData.habitat && speciesData.habitat.name ? speciesData.habitat.name : null,
+      hatch_counter: speciesData.hatch_counter
+    };
   }
 
   ngOnDestroy() {

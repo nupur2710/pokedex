@@ -1,10 +1,15 @@
 <div class='pokemon-tile-container' *ngIf='pokemon'>
     <div class='name-container'>{{pokemon.name | uppercase}}
-        <div class='sub-title-container'></div>
+        <div class='sub-title-container'>
+            Height : {{pokemon.height}} | Weight : {{pokemon.weight}}
+        </div>
+        <div class='sub-title-container'>
+            Type : <span *ngFor='let types of pokemon.types'> {{types.type.name | titlecase}}</span>
+        </div>
     </div>
     <div class='tile-container'>
         <div class='image-container'>
-            <ng-image-slider [images]='imageObject' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
+            <ng-image-slider [images]='imageObject' [showArrow]='false' [infinite]='true' [autoSlide]='3' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
         </div>
         <a [routerLink]="['/detailPage', pokemon.name]" class='view-details'>View Details</a>
     </div>

@@ -31,7 +31,7 @@ export class PokemonTileComponent implements OnInit {
           this.imageObject.push({
             image: images[imageKeys[i]],
             thumbImage: images[imageKeys[i]],
-            alt: 'alt of image'
+            alt: currentPokemon.name
           })
         }
       }

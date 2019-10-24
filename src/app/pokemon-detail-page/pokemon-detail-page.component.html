@@ -28,14 +28,24 @@
             </ul>
         </div>
         <div class='sub-topic-title'>
+            Summary :
+        </div>
+        <div class='list-details-container'>
+            {{speciesInformation.summary }}
+        </div>
+
+        <div class='sub-topic-title'>
             Species Information :
         </div>
         <div class='list-details-container'>
-            <div class='details' *ngIf='speciesData.base_happiness'>Base Happiness: {{speciesData.base_happiness}}</div>
-            <div class='details' *ngIf='speciesData.capture_rate'>Capture Rate: {{speciesData.capture_rate}}</div>
-            <div class='details' *ngIf='speciesData.color.name'>Color: {{speciesData.color.name | titlecase}}</div>
-            <div class='details' *ngIf='speciesData.growth_rate.name'>Growth Rate: {{speciesData.growth_rate.name | titlecase}}</div>
-            <div class='details' *ngIf='speciesData.shape.name'>Shape: {{speciesData.shape.name | titlecase}}</div>
+            <div class='details'>Base Happiness: {{speciesInformation.base_happiness}}</div>
+            <div class='details'>Capture Rate: {{speciesInformation.capture_rate}}</div>
+            <div class='details'>Color: {{speciesInformation.color | titlecase}}</div>
+            <div class='details'>Growth Rate: {{speciesInformation.growth_rate | titlecase}}</div>
+            <div class='details'>Shape: {{speciesInformation.shape| titlecase}}</div>
+            <div class='details'>Habitat: {{speciesInformation.habitat | titlecase}}</div>
+            <div class='details'>Hatch Counter: {{speciesInformation.hatch_counter}}</div>
+            <div class='details'>Evolves From: {{speciesInformation.evolves_from_species}}</div>
         </div>
         <div class='sub-topic-title'>
             Moves :

@@ -1,21 +1,22 @@
 .pokemon-tile-container {
-    width: 400px;
+    width: 200px;
+    padding: 20px;
     min-width: 200px;
     background-color: yellowgreen;
-    border-radius: 25px;
     .name-container {
         text-align: center;
         color: yellow;
         font-weight: 350;
         font-size: 25px;
+        .sub-title-container {
+            font-size: 15px;
+            color: #0e0eed;
+        }
     }
     .tile-container {
         .image-container {
             width: inherit;
             min-width: 200px;
         }
-    }
-    .view-details {
-        margin-left: 150px;
     }
 }

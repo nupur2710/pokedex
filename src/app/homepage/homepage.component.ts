@@ -40,18 +40,12 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  searchPokemon(event) {
-    var searchString = event.target.value;
-    this.filteredItems = this.pokeApiData.filter(item => {
-      return item['name'].indexOf(searchString) > -1;
-    });
-
-  }
 
   submitSearch(event) {
-    console.log(this.filteredItems);
-    this.pokeApiService.setSearchPokemonList(this.filteredItems);
-    this.router.navigate(['/searchPage']);
+    if (this.filteredItems) {
+      this.pokeApiService.setSearchPokemonList(this.filteredItems);
+      this.router.navigate(['/searchPage']);
+    }
   }
 
   getPokeData() {
