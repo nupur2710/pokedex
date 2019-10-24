@@ -8,7 +8,7 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent implements OnInit {
-  private variablelist: Array<String>;
+  private variablelist: Array<String>=[];
   private pokeApiData;
   private searchPokemonApi;
   private searchedPokemons: Array<Object> = [];

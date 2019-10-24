@@ -11,7 +11,7 @@ export class PokeApiService {
   pokeApiData;
   private todaysPokemon;
   public todaysPokemonUpdated = new Subject<Object>();
-  public searchPokemonList: Array<String>;
+  public searchPokemonList: Array<String> = [];
   constructor(private http: Http) { }
 
   fetchPokeData() {
@@ -22,11 +22,11 @@ export class PokeApiService {
       });
   }
 
-  fetchPokemonData(index){
+  fetchPokemonData(index) {
     return this.http.get('https://pokeapi.co/api/v2/pokemon/' + index);
   }
 
-  fetchPokemonSpeciesData(index){
+  fetchPokemonSpeciesData(index) {
     return this.http.get('https://pokeapi.co/api/v2/pokemon-species/' + index);
   }
 
@@ -46,19 +46,23 @@ export class PokeApiService {
     this.todaysPokemonUpdated.next(data);
   }
 
-  setPokeApiData(data){
+  setPokeApiData(data) {
     this.pokeApiData = data;
   }
 
-  getPokeApiData(){
+  getPokeApiData() {
     return this.pokeApiData;
   }
 
   setSearchPokemonList(data) {
     this.searchPokemonList = data;
+    localStorage.setItem('searchPokemonList', JSON.stringify(data));
   }
 
   getSearchPokemonList() {
+    if (this.searchPokemonList.length == 0 && localStorage.getItem('searchPokemonList')) {
+      this.searchPokemonList = JSON.parse(localStorage.getItem('searchPokemonList'));
+    }
     return this.searchPokemonList;
   }
 
