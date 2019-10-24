@@ -1,0 +1,26 @@
+.home-page-container {
+    width: 80%;
+    min-width: 500px;
+    margin: auto;
+    .select-container {
+        display: flex;
+        .select {
+            width: 90%;
+            padding-right: 10px;
+        }
+        .search-button {
+            background-color: red;
+            border: 1px solid red;
+            border-radius: 1%;
+        }
+    }
+    .pokemon-today {
+        margin: auto;
+        width: 35%;
+        .todays-pokemon-title {
+            color: red;
+            font-weight: 300;
+            font-size: 30px;
+        }
+    }
+}

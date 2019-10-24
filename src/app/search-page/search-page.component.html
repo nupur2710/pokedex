@@ -1,5 +1,5 @@
 <div class='search-page-container'>
-    <div *ngFor='let poke of searchedPokemons'>
+    <div *ngFor='let poke of searchedPokemons' class='single-pokemon-tile'>
         <app-pokemon-tile [pokemon]='poke'></app-pokemon-tile>
     </div>
 </div>

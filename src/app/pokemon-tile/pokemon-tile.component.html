@@ -1,10 +1,12 @@
 <div class='pokemon-tile-container' *ngIf='pokemon'>
-    <div class='image-container'>
-        <ng-image-slider [images]='imageObject' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
+    <div class='name-container'>{{pokemon.name | uppercase}}
+        <div class='sub-title-container'></div>
     </div>
-    <div class='information-container'>
-        <div class='name'>Name:</div>
-        <span>{{pokemon.name}}</span>
-        <a [routerLink]="['/detailPage', pokemon.name]">View Details</a>
+    <div class='tile-container'>
+        <div class='image-container'>
+            <ng-image-slider [images]='imageObject' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
+        </div>
+        <a [routerLink]="['/detailPage', pokemon.name]" class='view-details'>View Details</a>
     </div>
+
 </div>

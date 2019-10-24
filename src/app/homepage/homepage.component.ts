@@ -19,10 +19,6 @@ export class HomepageComponent implements OnInit {
     this.loadPokemonData();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   loadPokemonData() {
     let date = new Date(),
       todaysPokemonData = localStorage.getItem(date.toDateString()),
