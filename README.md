@@ -1,6 +1,15 @@
 # Pokedex
+● Design / Create a web application, using the PokeAPI, that consists of: 
+    ○ A homepage - which would include: 
+        ■ A search bar - that allows a user to search for a Pokemon. 
+        ■ A random Pokemon card below the search bar which would change on a daily basis for every user but not on every refresh. 
+    ○ A search results pages - with list of Pokemon that would match the user search. 
+    ○ A details page - that would display all the attributes associated with the Pokemon. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.10.
+## Steps to run
+ - Install Node
+ - Install angular/cli globally (Run npm install @angular/cli -g)
+ - Run npm install
 
 ## Development server
 
@@ -14,14 +23,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Check the unitTest document for the list of test cases
