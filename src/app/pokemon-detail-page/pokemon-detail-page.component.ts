@@ -13,6 +13,8 @@ export class PokemonDetailPageComponent implements OnInit {
   private subscription: Subscription;
   private pokemon: Object;
   private imageObject;
+  private speciesData;
+
   constructor(private route: ActivatedRoute, private pokeApiService: PokeApiService) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class PokemonDetailPageComponent implements OnInit {
         .map(response => {
           this.pokemon = JSON.parse(response['_body']);
           this.generateTileData(this.pokemon);
+          this.fetchInternalDetails(this.pokemon);
           console.log(this.pokemon);
         })
         .subscribe(data => console.log(data));
@@ -46,6 +49,15 @@ export class PokemonDetailPageComponent implements OnInit {
       }
     }
 
+  }
+
+  fetchInternalDetails(pokemon) {
+    this.pokeApiService.fetchPokemonSpeciesData(this.id)
+      .map(response => {
+        this.speciesData = JSON.parse(response['_body']);
+        console.log(this.speciesData);
+      })
+      .subscribe(data=>console.log(data));
   }
 
   ngOnDestroy() {

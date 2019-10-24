@@ -8,7 +8,8 @@ import { PokemonDetailPageComponent } from './pokemon-detail-page/pokemon-detail
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'searchPage', component: SearchPageComponent },
-  { path: 'detailPage/:id', component: PokemonDetailPageComponent }
+  { path: 'detailPage/:id', component: PokemonDetailPageComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 .pokemon-detail-container {
     width: 90%;
     margin: auto;
+    padding: 20px;
     background-color: yellowgreen;
     border-radius: 25px;
     .name-container {
@@ -17,13 +18,27 @@
         margin-top: 10px;
         text-align: center;
     }
+    .summary-container {
+        overflow: hidden;
+    }
+    .list-details-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
     .details {
         background-color: purple;
-        display: inline;
+        float: left;
         border-radius: 5px;
         padding: 5px;
         margin: 5px;
         color: #ccc;
+    }
+    .sub-topic-title {
+        color: #0e0eed;
+        font-weight: 350;
+        font-size: 25px;
+        text-decoration: underline;
     }
     .tile-container {
         .image-container {

@@ -18,10 +18,33 @@
         </div>
     </div>
 
-    <div class='summary-container'>
+    <div class='summary-container' *ngIf='speciesData'>
         <div class='sub-topic-title'>
-            Summary:
+            Abilities :
         </div>
+        <div class='list-details-container'>
+            <ul>
+                <li *ngFor='let ability of pokemon.abilities'>{{ability.ability.name | titlecase}}</li>
+            </ul>
+        </div>
+        <div class='sub-topic-title'>
+            Species Information :
+        </div>
+        <div class='list-details-container'>
+            <div class='details' *ngIf='speciesData.base_happiness'>Base Happiness: {{speciesData.base_happiness}}</div>
+            <div class='details' *ngIf='speciesData.capture_rate'>Capture Rate: {{speciesData.capture_rate}}</div>
+            <div class='details' *ngIf='speciesData.color.name'>Color: {{speciesData.color.name | titlecase}}</div>
+            <div class='details' *ngIf='speciesData.growth_rate.name'>Growth Rate: {{speciesData.growth_rate.name | titlecase}}</div>
+            <div class='details' *ngIf='speciesData.shape.name'>Shape: {{speciesData.shape.name | titlecase}}</div>
+        </div>
+        <div class='sub-topic-title'>
+            Moves :
+        </div>
+        <div class='list-details-container'>
+            <span class='details' *ngFor='let move of pokemon.moves'>{{move.move.name | titlecase}}</span>
+
+        </div>
+
     </div>
 
 </div>

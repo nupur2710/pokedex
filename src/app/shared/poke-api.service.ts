@@ -26,6 +26,10 @@ export class PokeApiService {
     return this.http.get('https://pokeapi.co/api/v2/pokemon/' + index);
   }
 
+  fetchPokemonSpeciesData(index){
+    return this.http.get('https://pokeapi.co/api/v2/pokemon-species/' + index);
+  }
+
   fetchSinglePokemonData(index) {
     this.http.get('https://pokeapi.co/api/v2/pokemon/' + index)
       .subscribe(
