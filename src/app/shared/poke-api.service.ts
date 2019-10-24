@@ -8,12 +8,15 @@ import { Subject } from 'rxjs/Subject';
   providedIn: 'root'
 })
 export class PokeApiService {
-  pokeApiData;
-  private todaysPokemon;
+  private pokeApiData: Object;
+  private todaysPokemon: Object;
   public todaysPokemonUpdated = new Subject<Object>();
   public searchPokemonList: Array<String> = [];
   constructor(private http: Http) { }
 
+  /**
+   * Fetch the list of available pokemons
+   */
   fetchPokeData() {
     return this.http.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964").
       map((response: Response) => {
@@ -22,15 +25,27 @@ export class PokeApiService {
       });
   }
 
-  fetchPokemonData(index) {
+  /**
+   * Fetch the detailed data for the pokemon
+   * @param {String} index name of the pokemon 
+   */
+  fetchPokemonData(index: String) {
     return this.http.get('https://pokeapi.co/api/v2/pokemon/' + index);
   }
 
-  fetchPokemonSpeciesData(index) {
+  /**
+   * Fetch the detailed species data for the pokemon
+   * @param {String} index name of the pokemon 
+   */
+  fetchPokemonSpeciesData(index: String) {
     return this.http.get('https://pokeapi.co/api/v2/pokemon-species/' + index);
   }
 
-  fetchSinglePokemonData(index) {
+  /**
+   * Fetch the detailed data for the pokemon
+   * @param {Number} index id of the pokemon 
+   */
+  fetchSinglePokemonData(index: Number) {
     this.http.get('https://pokeapi.co/api/v2/pokemon/' + index)
       .subscribe(
         (data) => {
@@ -42,23 +57,41 @@ export class PokeApiService {
       );
   }
 
-  setTodaysPokemon(data) {
+  /**
+   * Set the pokemon for the day
+   * @param {Object} data details of the pokemon for today
+   */
+  setTodaysPokemon(data: Object) {
     this.todaysPokemonUpdated.next(data);
   }
 
-  setPokeApiData(data) {
+  /**
+   * Set the list of pokemons
+   * @param {Object} data list of the available pokemons
+   */
+  setPokeApiData(data: Object) {
     this.pokeApiData = data;
   }
 
+  /**
+   * Get the list of pokemons
+   */
   getPokeApiData() {
     return this.pokeApiData;
   }
 
-  setSearchPokemonList(data) {
+  /**
+   * Set the list of searched pokemons in local storage
+   * @param {Array<String>} data list of pokemons entered in search bar
+   */
+  setSearchPokemonList(data: Array<String>) {
     this.searchPokemonList = data;
     localStorage.setItem('searchPokemonList', JSON.stringify(data));
   }
 
+  /**
+   * Get the list of searched pokemons from local storage
+   */
   getSearchPokemonList() {
     if (this.searchPokemonList.length == 0 && localStorage.getItem('searchPokemonList')) {
       this.searchPokemonList = JSON.parse(localStorage.getItem('searchPokemonList'));

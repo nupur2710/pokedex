@@ -19,6 +19,11 @@ export class HomepageComponent implements OnInit {
     this.loadPokemonData();
   }
 
+  /**
+   * Load the pokemon list data
+   * Load the pokemon for today
+   * First check if these data exist in the localStorage. Make the API request only if it does not exist.
+   */
   loadPokemonData() {
     let date = new Date(),
       todaysPokemonData = localStorage.getItem(date.toDateString()),
@@ -40,7 +45,10 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Submit the list of values entered in the search back and navigate to the search page
+   * @param event event from the click on Search Button
+   */
   submitSearch(event) {
     if (this.filteredItems) {
       this.pokeApiService.setSearchPokemonList(this.filteredItems);
@@ -48,6 +56,9 @@ export class HomepageComponent implements OnInit {
     }
   }
 
+  /**
+   * Get the list of available pokemons and set it in local storage
+   */
   getPokeData() {
     this.pokeApiService.fetchPokeData()
       .subscribe(
@@ -59,6 +70,10 @@ export class HomepageComponent implements OnInit {
       );
   }
 
+  /**
+   * Get the random pokemon for the day by generating a random number
+   * Store this pokemon in localStorage for the current day
+   */
   getRandomPokemonForToday() {
     let random = Math.floor(Math.random() * Math.floor(807))
     this.pokeApiService.fetchSinglePokemonData(random);

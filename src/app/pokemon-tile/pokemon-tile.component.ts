@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class PokemonTileComponent implements OnInit {
   private subscription: Subscription;
-  @Input() pokemon;
+  @Input() pokemon: Object;
   private isTodaysPokemonFetched: Boolean = false;
   private imageObject: Array<any> = [];
 
@@ -22,6 +22,10 @@ export class PokemonTileComponent implements OnInit {
     this.generateTileData(this.pokemon);
   }
 
+  /**
+   * Generate the imageObject with a list of sprite images to be displayed on the carousel for the pokemon
+   * @param currentPokemon 
+   */
   generateTileData(currentPokemon) {
     if (currentPokemon) {
       this.pokemon = currentPokemon;
@@ -36,22 +40,22 @@ export class PokemonTileComponent implements OnInit {
         }
       }
     }
-
   }
 
+  /**
+   * Fetch the pokemon for current day from the service
+   */
   fetchTodaysPokemom() {
     this.subscription = this.pokeApiService.todaysPokemonUpdated.subscribe(
       (todaysPokemon) => {
         this.generateTileData(todaysPokemon);
         this.isTodaysPokemonFetched = true;
-      }
+      },
+      (err) => console.log(err)
     )
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
-
 }

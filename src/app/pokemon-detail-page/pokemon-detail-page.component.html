@@ -1,23 +1,27 @@
 <div class='pokemon-detail-container' *ngIf='pokemon'>
+    <!-- Start name container-->
     <div class='name-container'>{{pokemon.name | uppercase}}
         <div class='sub-title-container'>
             Height : {{pokemon.height}} | Weight : {{pokemon.weight}} | Type : <span *ngFor='let types of pokemon.types'> {{types.type.name | titlecase}}</span>
 
         </div>
     </div>
+    <!-- End name container-->
+    <!-- Start statistics container-->
     <div class='sub-data-container'>
         <div class='details-container'>
             <div *ngFor='let stat of pokemon.stats' class='details'>{{stat.stat.name | titlecase}} : {{stat.base_stat}}</div>
-
         </div>
     </div>
+    <!-- End statistics container-->
 
     <div class='tile-container'>
         <div class='image-container'>
-            <ng-image-slider [images]='imageObject' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
+            <ng-image-slider [images]='imageObject' [showArrow]='false' [infinite]='true' [autoSlide]='5' [slideImage]='1' [imagePopup]='false' #nav></ng-image-slider>
         </div>
     </div>
 
+    <!--Start summary details container-->
     <div class='summary-container' *ngIf='speciesData'>
         <div class='sub-topic-title'>
             Abilities :
@@ -56,5 +60,6 @@
         </div>
 
     </div>
+    <!--End summary details container-->
 
 </div>

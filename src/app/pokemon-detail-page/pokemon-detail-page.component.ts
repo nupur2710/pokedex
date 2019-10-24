@@ -12,7 +12,7 @@ export class PokemonDetailPageComponent implements OnInit {
   private id: String;
   private subscription: Subscription;
   private pokemon: Object;
-  private imageObject;
+  private imageObject: Array<Object>;
   private speciesData;
   private speciesInformation;
 
@@ -21,19 +21,30 @@ export class PokemonDetailPageComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.pokeApiService.fetchPokemonData(this.id)
-        .map(response => {
-          this.pokemon = JSON.parse(response['_body']);
-          this.generateTileData(this.pokemon);
-          this.fetchInternalDetails(this.pokemon);
-          console.log(this.pokemon);
-        })
-        .subscribe(data => console.log(data));
-
+      this.fetchPokemonDetailedData();
     });
     console.log(this.id);
   }
 
+  /**
+   * Fetch the detailed data of the pokemon
+   */
+  fetchPokemonDetailedData() {
+    this.pokeApiService.fetchPokemonData(this.id)
+      .map(response => {
+        this.pokemon = JSON.parse(response['_body']);
+        this.generateTileData(this.pokemon);
+        this.fetchInternalDetails(this.pokemon);
+        console.log(this.pokemon);
+      })
+      .subscribe(data => console.log(data),
+        (err) => console.log(err));
+  }
+
+  /**
+  * Generate the imageObject with a list of sprite images to be displayed on the carousel for the pokemon
+  * @param currentPokemon pokemon object for which the details are to be shown
+  */
   generateTileData(currentPokemon) {
     if (currentPokemon) {
       this.pokemon = currentPokemon;
@@ -44,7 +55,7 @@ export class PokemonDetailPageComponent implements OnInit {
           this.imageObject.push({
             image: images[imageKeys[i]],
             thumbImage: images[imageKeys[i]],
-            alt: 'alt of image'
+            alt: currentPokemon.name
           })
         }
       }
@@ -52,6 +63,10 @@ export class PokemonDetailPageComponent implements OnInit {
 
   }
 
+  /**
+   * Fetch the species specific details for the pokemon
+   * @param pokemon pokemon object for which the internal species details are to be shown
+   */
   fetchInternalDetails(pokemon) {
     this.pokeApiService.fetchPokemonSpeciesData(this.id)
       .map(response => {
@@ -60,9 +75,14 @@ export class PokemonDetailPageComponent implements OnInit {
         this.generateSpeciesDataObject();
 
       })
-      .subscribe(data => console.log(data));
+      .subscribe(data => console.log(data),
+        (err) => console.log(err));
   }
 
+  /**
+   * Generate the object from the data received from the species API for the pokemon
+   * Use this object to display the data in the HTML file
+   */
   generateSpeciesDataObject() {
     let speciesData = this.speciesData, summary = '';
     let enSummaryList = this.speciesData["flavor_text_entries"].filter((item, index) => {

@@ -7,9 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private router: Router){
 
+  constructor(private router: Router){
   }
+  
+  /**
+   * Navigation to home on click of the Pokedex logo
+   * @param event 
+   */
   returnToHome(event){
     this.router.navigate(['/']);
   }
