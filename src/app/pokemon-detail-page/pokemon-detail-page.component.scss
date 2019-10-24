@@ -1,0 +1,34 @@
+.pokemon-detail-container {
+    width: 90%;
+    margin: auto;
+    background-color: yellowgreen;
+    border-radius: 25px;
+    .name-container {
+        text-align: center;
+        color: yellow;
+        font-weight: 350;
+        font-size: 25px;
+        .sub-title-container {
+            font-size: 15px;
+            color: #0e0eed;
+        }
+    }
+    .details-container {
+        margin-top: 10px;
+        text-align: center;
+    }
+    .details {
+        background-color: purple;
+        display: inline;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        color: #ccc;
+    }
+    .tile-container {
+        .image-container {
+            width: inherit;
+            min-width: 200px;
+        }
+    }
+}
