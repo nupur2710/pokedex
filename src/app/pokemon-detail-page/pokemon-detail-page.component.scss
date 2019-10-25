@@ -16,6 +16,7 @@
     .details-container {
         margin-top: 10px;
         text-align: center;
+        display: inline-block;
     }
     .summary-container {
         overflow: hidden;
@@ -38,9 +39,12 @@
         font-size: 25px;
         text-decoration: underline;
     }
+    .sub-data-container {
+        text-align: center;
+    }
     .tile-container {
         .image-container {
-            width: 600px;
+            width: 630px;
             min-width: 200px;
             margin: auto;
         }
