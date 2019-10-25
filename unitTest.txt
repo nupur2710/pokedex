@@ -1,34 +1,33 @@
-Test Cases for the above Pokedex APP are as follows:
+Test cases for Pokedex
 
-Homepage:-
-    1.Check if random pokemon loads daily.
-    2.Check if pokemon stays the same on page refresh for that particular day.(To check for next day use the following code in console window "var date = new Date();localStorage.removeItem(date.toDateString())").
-    3.Check if pokemon is not repeated in a months time.
-    4.Check is search button is not clickable on empty search.
-    5.Check if multiple options can be selected or not.
-    6.Check if you can type and select an option on enter.
-    7.Check if logos are loaded correctly, if not check for alt text.
-    8.Check if 'View Details' link is functional of randmon pokemon.
-    9.Check once List API is called once, on refresh its not called again so we can validate the use of Memoization. This can be done by checking server calls made from network tab requests in console window. 
-    10.Check for Multi Users that different pokemon is loaded.
+Home Page:
+    1. The search bar with Search button is visible clearly.
+    2. The search is not triggered when no values are entered in the Search bar.
+    3. Multi select for Search bar.
+    5. Type and enter the pokemon name to select it in Search bar.
+    6. On click of down-arrow, the list of pokemons loads correctly from API for the lookup in the Search bar.
+    7. Today's pokemon is selected randomly.
+    8. Today's pokemon doesn't change on refresh.
+    9. Today's pokemon changes for a new date. (Type localStorage.clear() and then refresh).
+    10. The images for today's pokemon load and animate correctly.
+    11. The data displayed for today's pokemon in Pokemon Card is correct as per the API.
+    12. 'Show details' link functions correctly in the Pokemon Card.
+    13. Search button click navigates to searchPage.
 
-Search Page:-
-    1.See if all pokemons selected on search are loaded correctly.
-    2.Check the count of the pokemons loaded if they matched the searched ones.
-    3.Check for alt text in images.
-    4.Check if 'View Details' link is functional for all pokemons and correct data is loaded on click.
-    5.Refresh page to check if same options are populated again.
-    6.On logo click route to homepage.
+Search Results Page:
+    13. The Pokemon Cards for the searched pokemons loads correctly.
+    14. The count of Pokemon Cards matches the count of items searched.
+    15. 'Show details' link functions correctly in the Pokemon Card.
+    16. The search doesn't change on refresh.
+    17. On click on 'Pokedex' logo, navigate to Homepage.
 
-Pokemon Details Page:-
-    1. See if all details of the pokemon are loaded correctly.
-    2. Check if few parameters missing for a pokemon then the data is not shown.
-    3. Check if Summary is displayed correctly.
-    4. Check alt text for image if not loaded.
-    5. Check if all moves are loaded correctly and shown.
-    6. Check with online API if data shown is precise and correct.
-    7. Check if any data is missed in the main API.
-    8. Reload page to see if the data for that pokemon is loaded correctly   
-    9. On logo click route to homepage.
+Pokemon Detail Page:
+    18. All details of the Pokemon are displayed correctly.
+    19. The images for Pokemon load and animate correctly.
+    20. The details of pokemon are consistent with the API.
+    21. The details don't change on refresh.
+    22. On click on 'Pokedex' logo, navigate to Homepage.
 
-Check the above on all browsers like chrome, firefox and others.
+Additional Configurations:
+    23. Enter a wrong url, it should navigate to the Homepage.
+    24. Enter wrong data for Pokemon API, the error will be displayed in the console. (Eg: http://localhost:4200/detailPage/bulbasau)
