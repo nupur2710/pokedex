@@ -27,6 +27,7 @@ export class PokemonTileComponent implements OnInit {
    * @param currentPokemon 
    */
   generateTileData(currentPokemon) {
+    let typeArray = [];
     if (currentPokemon) {
       this.pokemon = currentPokemon;
       let images = currentPokemon['sprites'], imageKeys = Object.keys(images);
@@ -39,6 +40,10 @@ export class PokemonTileComponent implements OnInit {
           })
         }
       }
+      for(let i=0; i<this.pokemon['types'].length; i++){
+        typeArray.push(this.pokemon['types'][i]['type']['name']);
+      }
+      this.pokemon['types'] = typeArray.join(', ');
     }
   }
 

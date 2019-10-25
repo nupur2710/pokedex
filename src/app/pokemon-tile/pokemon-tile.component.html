@@ -4,7 +4,7 @@
             Height : {{pokemon.height}} | Weight : {{pokemon.weight}}
         </div>
         <div class='sub-title-container'>
-            Type : <span *ngFor='let types of pokemon.types'> {{types.type.name | titlecase}}</span>
+            Type : <span> {{pokemon.types | titlecase}}</span>
         </div>
     </div>
     <div class='tile-container'>
